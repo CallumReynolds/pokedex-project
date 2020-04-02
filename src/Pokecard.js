@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import './Pokecard.css';
 
-const pokeimg = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+//const pokeimg = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+const pokeimg = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
+
+let padToThree = (number) => (number <= 999 ? `00${number}`.slice(-3) : number);
 
 class Pokecard extends Component {
-    // static defaultProps = {
-    //     id: 4, name: 'Charmander', type: 'fire',
-    //     id: 7, name: 'Squirtle', type: 'water',
-    //     id: 4, name: 'Charmander', type: 'fire'
-    // }
-    
     render() {
-        let imgSrc = `${pokeimg}${this.props.id}.png`
+        let imgSrc = `${pokeimg}${padToThree(this.props.id)}.png`
         return (
         <div className='Pokecard'>
-            <h3>{this.props.name}</h3>
+            <h1 className='Pokecard-title'>{this.props.name}</h1>
             <img src={imgSrc} alt={this.props.name}/>
-            <div>Type: {this.props.type}</div>
-            <div>EXP: {this.props.exp}</div>
+            <div className='Pokecard-data'>Type: {this.props.type}</div>
+            <div className='Pokecard-data'>EXP: {this.props.exp}</div>
         </div>
         );
     }
